@@ -1,0 +1,22 @@
+---------------------------------Remove Duplicates from unsorted Linked List--------------------------
+Approach--- 
+We iterate through Loop using 2 pointer approach and check if the two elements are equal or not
+..if equal then remove that element (point the current pointer to the next.next pointer)
+..else move the current pointer
+
+public Node removeDuplicates(Node head){
+Node curr=head;
+         while(curr!=null){
+             Node temp=curr.next;
+             while(temp!=null && temp.next!=null){
+                 if(temp.data==curr.data){
+                     temp.next=temp.next.next;
+                 }
+                 else{
+                     temp=temp.next;
+                 }
+             }
+             curr=curr.next;
+         }
+         return head;
+}
