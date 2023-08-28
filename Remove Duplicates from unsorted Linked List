@@ -1,5 +1,5 @@
 ---------------------------------Remove Duplicates from unsorted Linked List--------------------------
-Approach--- 
+Approach 1 --- 
 We iterate through Loop using 2 pointer approach and check if the two elements are equal or not
 ..if equal then remove that element (point the current pointer to the next.next pointer)
 ..else move the current pointer
@@ -19,4 +19,37 @@ Node curr=head;
              curr=curr.next;
          }
          return head;
+}  
+
+Time complexity --O(N^2)
+space complexity --O(1)
+
+Approach 2:
+We will use a HASHMAP and insert the linked list elements inside that HASHMAP 
+then check if an element already exists in that map skip that element 
+
+ public Node removeDuplicates(Node head) 
+    {
+         if(head==null || head.next==null) return head;
+         
+         HashMap<Integer,Boolean> map=new HashMap<>();
+         Node curr=head;
+         Node prev=null;
+         while(curr!=null){
+             if(map.containsKey(curr.data)){
+                 prev.next=curr.next; // skipping the current node
+             }
+             else
+             {
+                  map.put(curr.data,true); 
+                  prev=curr;
+             }
+               curr=curr.next;
+        }
+    
+    return head;
+    
 }
+
+Time complexity --O(N)
+space complexity --O(N)
