@@ -1,0 +1,34 @@
+ Approach:
+
+Here I checked index with the help of ind variable so that i can get the index and then compared with it with x. 
+if index==x then we check whether the x is at head of the list if yes then we move the head otherwise if we will delete the head of the list our entire linked list would be lost.
+else we check for the next node.
+
+Node deleteNode(Node head, int x){
+	// Your code here
+
+	if(head==null || head.next==null) return head;
+	Node curr=head;
+	 int ind=1;
+	 Node prev=null;
+	while(curr!=null){
+	    if(ind!=x){
+	        prev=curr;
+	       
+	    }
+	    else{
+	        if(prev==null){
+	            head=curr.next;
+	        }
+	        else{
+	            prev.next=curr.next;
+	        }
+	        
+	    }
+	    curr=curr.next;
+	    ind++;
+	}
+	
+	return head;
+	
+    }
