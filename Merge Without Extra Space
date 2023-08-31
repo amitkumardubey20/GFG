@@ -1,0 +1,32 @@
+Approach:
+Here we are know that both the arrays are sorted then what we do 
+we campare arr1 last element with the arr2 first element 
+if arr1 last element > arr2 first element -----> then we swap them
+else we stop... (because whenever arr1 element becomes smaller than arr2 element then both the arrays have right element in it)
+at last we sort the both of them. 
+
+------------------------------------------------------------------------------------------------------------------------------
+ public static void merge(long arr1[], long arr2[], int n, int m) 
+    {
+        // code here 
+        int i=n-1;
+        int j=0;
+        
+        while(i>=0 && j<m){
+            if(arr1[i]>arr2[j]){
+                long temp=arr1[i];
+                arr1[i]=arr2[j];
+                arr2[j]=temp;
+                i--;
+                j++;
+            }
+            else{
+                break;
+            }
+        }
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+    }
+
+Time Complexity -- O(nlogn)+O(mlogm)
+Space Complexity--O(1)
