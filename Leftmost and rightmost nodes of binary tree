@@ -1,0 +1,57 @@
+Approach 1:
+first we take a queue and then we add node in that queue
+and traverse the queue to its length and check if it is a first and last element then we remove that element from the queue 
+and print the data then we check if current element's has any left and right value if it then we add it to the queue.
+
+public static void printCorner(Node node)
+    {
+        // add your code here  
+        Queue<Node>q=new LinkedList<>();
+        q.add(node);
+         
+        while(q.size()>0){
+            int n=q.size();
+            for(int i=0;i<n;i++){
+                Node curr=q.remove();
+                if(i==0 || i==n-1){
+                    System.out.print(curr.data+" ");
+                }
+                if(curr.left!=null) q.add(curr.left);
+                if(curr.right!=null) q.add(curr.right);
+            }
+        }
+    }
+Time complexity: O(N^2)
+space complexity:O(N)
+
+Approach 2:
+first we take a queue and then we add node in that queue and a null value and take a flag variable
+and traverse the queue to its length and check for the null value 
+if it is null then make the flag true and check the size of the queue
+       If it is 0 then break the loop  
+       else add the null in queue
+else we check if queue peek is null or flag is true then print the current data. and make the flag flase.
+then we check if current element's has any left and right value if it then we add it to the queue.
+
+Queue<Node> q = new LinkedList<>();
+        q.add(node);
+        q.add(null);
+        boolean flag = false;
+        
+        while(q.size()>0){
+            Node curr = q.remove();
+            if(curr==null){
+                flag = true;
+                if(q.size()==0) break;
+                else q.add(null);
+            }
+            else{
+                if(q.peek()==null || flag==true){
+                    System.out.print(curr.data+" ");
+                    flag =false;
+                }
+                if(curr.left!=null) q.add(curr.left);
+                if(curr.right!=null) q.add(curr.right);
+            }
+        }
+    }
